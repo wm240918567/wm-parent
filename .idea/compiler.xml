@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="wm-idempotent" />
-        <module name="wm-service" />
+        <module name="wm-traceLog-client" />
         <module name="wm-redis" />
         <module name="wm-tools" />
-        <module name="wm-traceLog-client" />
+        <module name="wm-service" />
         <module name="wm-dto" />
         <module name="wm-validation" />
       </profile>
