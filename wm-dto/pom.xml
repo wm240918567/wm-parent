@@ -4,33 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.wm.framework</groupId>
         <artifactId>wm-parent</artifactId>
+        <groupId>com.wm.framework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>wm-common</artifactId>
+    <artifactId>wm-dto</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>wm-common</name>
-    <description>wm-common</description>
+    <name>wm-dto</name>
+    <description>wm-dto</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>wm-common</finalName>
+        <finalName>wm-dto</finalName>
     </build>
 
 </project>

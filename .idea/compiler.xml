@@ -6,9 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wm-common" />
         <module name="wm-validation" />
+        <module name="wm-dto" />
+        <module name="wm-service" />
+        <module name="wm-tools" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wm-common" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

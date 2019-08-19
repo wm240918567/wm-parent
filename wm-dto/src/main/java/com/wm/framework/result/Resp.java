@@ -1,5 +1,6 @@
 package com.wm.framework.result;
 
+import com.wm.framework.common.RespConst;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -21,6 +22,10 @@ public class Resp<T> {
     @ApiModelProperty(value = "返回对象,成功返回内容；异常返回异常信息", name = "body")
     private T body;
 
+    @ApiModelProperty(value = "请求数据，json格式数据",name = "reqParam")
+    private String reqParam;
+
+
 
     /**
      * 处理成功，带返回值
@@ -29,7 +34,7 @@ public class Resp<T> {
      * @param <T>  对象泛型
      * @return Resp
      */
-    public static <T> Resp<T> ok(T body) {
+    public static <T> Resp<T> ok(final T body) {
         Resp<T> respBody = new Resp<>(RespConst.OK);
         respBody.setBody(body);
         return respBody;
@@ -51,7 +56,7 @@ public class Resp<T> {
      * @param <T>  对象泛型
      * @return Resp
      */
-    public static <T> Resp<T> fail(T body) {
+    public static <T> Resp<T> fail(final T body) {
         Resp<T> respBody = new Resp<>(RespConst.FAIL);
         respBody.setBody(body);
         return respBody;
@@ -73,7 +78,7 @@ public class Resp<T> {
      * @param <T>  对象泛型
      * @return Resp
      */
-    public static <T> Resp<T> badReq(T body) {
+    public static <T> Resp<T> badReq(final T body) {
         Resp<T> respBody = new Resp<>(RespConst.BADREQ);
         respBody.setBody(body);
         return respBody;
@@ -94,26 +99,10 @@ public class Resp<T> {
      *
      * @param respConst 返回常量
      */
-    private Resp(RespConst respConst) {
+    private Resp(final RespConst respConst) {
         this.status = respConst.name();
         this.code = respConst.getCode();
         this.msg = respConst.getMsg();
-    }
-
-    /**
-     * Resp返回常量
-     */
-    @Getter
-    @AllArgsConstructor
-    public enum RespConst {
-
-        OK(200, "业务处理成功"),
-        BADREQ(400, "请求异常"),
-        FAIL(500, "业务处理异常"),
-        ;
-
-        private Integer code;
-        private String msg;
     }
 
 }
