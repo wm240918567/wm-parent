@@ -11,6 +11,8 @@
         <module>wm-dto</module>
         <module>wm-tools</module>
         <module>wm-service</module>
+        <module>wm-idempotent</module>
+        <module>wm-redis</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
@@ -32,6 +34,7 @@
         <tomcat.version>9.0.22</tomcat.version>
         <validation.version>2.0.1.Final</validation.version>
         <aspectj.version>1.9.4</aspectj.version>
+        <shiro.version>1.4.1</shiro.version>
     </properties>
 
     <dependencies>
@@ -69,6 +72,12 @@
         <dependencies>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
                 <optional>true</optional>
@@ -98,6 +107,16 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

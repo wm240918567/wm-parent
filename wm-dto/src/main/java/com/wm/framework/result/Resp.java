@@ -3,8 +3,14 @@ package com.wm.framework.result;
 import com.wm.framework.common.RespConst;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+/**
+ * @author: 王锰
+ * @date: 2019/8/18
+ */
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @ApiModel(value = "通用业务返回对象Resp")
@@ -22,9 +28,8 @@ public class Resp<T> {
     @ApiModelProperty(value = "返回对象,成功返回内容；异常返回异常信息", name = "body")
     private T body;
 
-    @ApiModelProperty(value = "请求数据，json格式数据",name = "reqParam")
+    @ApiModelProperty(value = "请求数据，json格式数据", name = "reqParam")
     private String reqParam;
-
 
 
     /**
@@ -63,6 +68,17 @@ public class Resp<T> {
     }
 
     /**
+     * 抛出未知异常
+     *
+     * @return 未知异常信息
+     */
+    public static <T> Resp<T> unknown(T body) {
+        Resp<T> resp = new Resp<>(RespConst.UNKNOWN_EXCEPTION);
+        resp.setBody(body);
+        return resp;
+    }
+
+    /**
      * 处理失败 无返回值
      *
      * @return Resp
@@ -79,20 +95,10 @@ public class Resp<T> {
      * @return Resp
      */
     public static <T> Resp<T> badReq(final T body) {
-        Resp<T> respBody = new Resp<>(RespConst.BADREQ);
+        Resp<T> respBody = new Resp<>(RespConst.BAD_REQ);
         respBody.setBody(body);
         return respBody;
     }
-
-    /**
-     * 请求异常，无返回值
-     *
-     * @return Resp
-     */
-    public static Resp badReq() {
-        return badReq(null);
-    }
-
 
     /**
      * 私有构造器不允许外部使用构造器新建对象

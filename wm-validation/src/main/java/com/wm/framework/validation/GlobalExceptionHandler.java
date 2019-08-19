@@ -1,7 +1,8 @@
 package com.wm.framework.validation;
 
-
 import com.alibaba.fastjson.JSONObject;
+import com.wm.framework.exception.BizException;
+import com.wm.framework.exception.BizRuntimeException;
 import com.wm.framework.result.Resp;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,6 +28,51 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    /**
+     * 业务异常拦截器
+     *
+     * @param ex BizException异常
+     * @return 返回值
+     */
+    @ExceptionHandler(BizException.class)
+    public Resp<String> bizExceptionHandler(BizException ex) {
+        log.error("业务异常：{}", ex.getMessage());
+        return Resp.fail(ex.getMessage());
+    }
+
+    /**
+     * 业务异常拦截器
+     *
+     * @param ex BizRuntimeException异常
+     * @return 返回值
+     */
+    @ExceptionHandler(BizRuntimeException.class)
+    public Resp<String> bizRuntimeExceptionHandler(BizRuntimeException ex) {
+        log.error("业务运行时异常：{}", ex.getMessage());
+        return Resp.fail(ex.getMessage());
+    }
+
+    /**
+     * 全局未知异常拦截器
+     *
+     * @param ex Throwable异常
+     * @return 返回值
+     */
+    @ExceptionHandler({Throwable.class})
+    public Resp<String> throwableHandler(Throwable ex) {
+        String bodyMsg;
+        if (ex instanceof NullPointerException && StringUtils.isEmpty(ex.getMessage())) {
+            //对NPE的特殊处理
+            bodyMsg = "NPE";
+        } else {
+            bodyMsg = ex.getMessage();
+        }
+        log.error("未知异常：{}", bodyMsg);
+        ex.printStackTrace();
+        return Resp.unknown(bodyMsg);
+    }
+
 
     /**
      * 启用@valid校验抛出异常处理

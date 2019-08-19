@@ -8,11 +8,11 @@
         <groupId>com.wm.framework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>wm-service</artifactId>
+    <artifactId>wm-idempotent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>wm-service</name>
-    <description>wm-service</description>
+    <name>wm-idempotent</name>
+    <description>wm-idempotent</description>
 
     <dependencies>
         <dependency>
@@ -36,10 +36,19 @@
             <artifactId>wm-dto</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.wm.framework</groupId>
+            <artifactId>wm-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>wm-service</finalName>
+        <finalName>wm-idempotent</finalName>
     </build>
 
 
