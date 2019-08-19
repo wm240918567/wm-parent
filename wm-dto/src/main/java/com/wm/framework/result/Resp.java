@@ -28,10 +28,6 @@ public class Resp<T> {
     @ApiModelProperty(value = "返回对象,成功返回内容；异常返回异常信息", name = "body")
     private T body;
 
-    @ApiModelProperty(value = "请求数据，json格式数据", name = "reqParam")
-    private String reqParam;
-
-
     /**
      * 处理成功，带返回值
      *

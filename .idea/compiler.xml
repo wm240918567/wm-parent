@@ -10,6 +10,7 @@
         <module name="wm-service" />
         <module name="wm-redis" />
         <module name="wm-tools" />
+        <module name="wm-traceLog-client" />
         <module name="wm-dto" />
         <module name="wm-validation" />
       </profile>

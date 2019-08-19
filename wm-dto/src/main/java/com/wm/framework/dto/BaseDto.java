@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * @author: 王锰
  * @date: 2019/8/18
  */
-@ApiModel(value = "基础数据传输对象", description = "所有dto继承此DTO")
+@ApiModel(value = "基础数据传输对象", description = "DTO的基类")
 @Data
 public class BaseDto implements Serializable {
 

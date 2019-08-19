@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel(value = "基础分页查询对象", description = "需要分页时必须继承此DTO")
+@ApiModel(value = "基础分页查询对象", description = "需要分页DTO的基类")
 public class PageBaseDto extends BaseDto {
 
     @ApiModelProperty(value = "页数", name = "页数")

@@ -13,6 +13,7 @@
         <module>wm-service</module>
         <module>wm-idempotent</module>
         <module>wm-redis</module>
+        <module>wm-traceLog-client</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
@@ -35,6 +36,7 @@
         <validation.version>2.0.1.Final</validation.version>
         <aspectj.version>1.9.4</aspectj.version>
         <shiro.version>1.4.1</shiro.version>
+        <openfeign.version>10.2.3</openfeign.version>
     </properties>
 
     <dependencies>
@@ -74,19 +76,16 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>${spring.version}</version>
-                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
-                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
-                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>joda-time</groupId>
@@ -117,6 +116,11 @@
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-core</artifactId>
                 <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-core</artifactId>
+                <version>${openfeign.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
