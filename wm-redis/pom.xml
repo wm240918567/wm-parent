@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>wm-parent</artifactId>
-        <groupId>com.wm.framework</groupId>
+        <groupId>org.wmframework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>wm-redis</artifactId>
@@ -18,6 +18,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+            <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
             <optional>false</optional>
         </dependency>
     </dependencies>
