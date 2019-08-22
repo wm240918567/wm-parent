@@ -1,2 +1,8 @@
 # Project exclude paths
 /wm-common/target/
+/wm-dto/target/
+/wm-idempotent/target/
+/wm-redis/target/
+/wm-tools/target/
+/wm-traceLog-client/target/
+/wm-validation/target/
