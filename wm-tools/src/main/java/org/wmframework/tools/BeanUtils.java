@@ -95,7 +95,7 @@ public class BeanUtils {
      * @param clazz 类型
      * @return fieldjlist
      */
-    private static List<Field> recursive(List<Field> list, Class<?> clazz) {
+    public static List<Field> recursive(List<Field> list, Class<?> clazz) {
         if (clazz != null) {
             list.addAll(Arrays.asList(clazz.getDeclaredFields()));
             return recursive(list, clazz.getSuperclass());

@@ -1,13 +1,12 @@
-package org.wmframework.annotations;
+package org.wmframework.idempotent.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
- * 接口幂等
+ * 幂等字段注解
  * 用于标注dto中的字段
  * 要配合@Idempotent使用
  *

@@ -1,6 +1,5 @@
 # Project exclude paths
-/wm-common/target/
-/wm-dto/target/
+/wm-base/target/
 /wm-idempotent/target/
 /wm-redis/target/
 /wm-tools/target/

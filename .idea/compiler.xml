@@ -10,12 +10,13 @@
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
         <module name="wm-tools" />
-        <module name="wm-dto" />
+        <module name="wm-base" />
         <module name="wm-validation" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="wm-common" target="1.8" />
+      <module name="wm-dto" target="1.8" />
       <module name="wm-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -13,6 +13,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/wm-common/pom.xml" />
+        <option value="$PROJECT_DIR$/wm-dto/pom.xml" />
         <option value="$PROJECT_DIR$/wm-service/pom.xml" />
       </set>
     </option>

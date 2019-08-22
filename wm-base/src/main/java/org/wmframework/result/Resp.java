@@ -1,11 +1,11 @@
 package org.wmframework.result;
 
-import org.wmframework.common.RespConst;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.wmframework.common.RespConst;
 
 /**
  * @author: 王锰

@@ -1,10 +1,11 @@
-package org.wmframework.dto;
+package org.wmframework.idempotent.dto;
 
-import org.wmframework.annotations.IdempotentField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.wmframework.dto.BaseDto;
+import org.wmframework.idempotent.annotations.IdempotentField;
 
 @EqualsAndHashCode(callSuper = true)
 @Data

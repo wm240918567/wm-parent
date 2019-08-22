@@ -53,25 +53,25 @@ public class GlobalExceptionHandler {
         return Resp.fail(ex.getMessage());
     }
 
-    /**
-     * 全局未知异常拦截器
-     *
-     * @param ex Throwable异常
-     * @return 返回值
-     */
-    @ExceptionHandler({Throwable.class})
-    public Resp<String> throwableHandler(Throwable ex) {
-        String bodyMsg;
-        if (ex instanceof NullPointerException && StringUtils.isEmpty(ex.getMessage())) {
-            //对NPE的特殊处理
-            bodyMsg = "NPE";
-        } else {
-            bodyMsg = ex.getMessage();
-        }
-        log.error("未知异常：{}", bodyMsg);
-        ex.printStackTrace();
-        return Resp.unknown(bodyMsg);
-    }
+//    /**
+//     * 全局未知异常拦截器
+//     *
+//     * @param ex Throwable异常
+//     * @return 返回值
+//     */
+//    @ExceptionHandler({Throwable.class})
+//    public Resp<String> throwableHandler(Throwable ex) {
+//        String bodyMsg;
+//        if (ex instanceof NullPointerException && StringUtils.isEmpty(ex.getMessage())) {
+//            //对NPE的特殊处理
+//            bodyMsg = "NPE";
+//        } else {
+//            bodyMsg = ex.getMessage();
+//        }
+//        log.error("未知异常：{}", bodyMsg);
+//        ex.printStackTrace();
+//        return Resp.unknown(bodyMsg);
+//    }
 
 
     /**
