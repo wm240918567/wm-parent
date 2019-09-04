@@ -12,6 +12,7 @@
         <module name="wm-tools" />
         <module name="wm-base" />
         <module name="wm-validation" />
+        <module name="wm-cors" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
