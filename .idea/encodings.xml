@@ -2,8 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wm-base" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wm-cors" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wm-crud" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wm-idempotent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wm-redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wm-tools" charset="UTF-8" />

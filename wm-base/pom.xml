@@ -16,18 +16,39 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <!--true是不传递给子模块 false是默认传递给子模块-->
+            <optional>true</optional>
+        </dependency>
+        <!-- json解析框架：fastjson依赖 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+            <!--true是不传递给子模块 false是默认传递给子模块-->
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>wm-base</finalName>
     </build>
-
 
 </project>

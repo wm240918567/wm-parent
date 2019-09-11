@@ -36,7 +36,7 @@ import java.util.Optional;
 public class IdempotentAspect {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private IdempotentStrategyContext idempotentStrategyContext;
@@ -77,7 +77,7 @@ public class IdempotentAspect {
             return processResult;
         } else {
             log.info("try lock failed");
-            String value = redisTemplate.opsForValue().get(key);
+            String value = stringRedisTemplate.opsForValue().get(key);
             if ("1".equals(value)) {
                 log.error("same request executing");
                 throw new BizException("请求正在处理。。。。。。");
@@ -102,7 +102,7 @@ public class IdempotentAspect {
         try {
             RedisCallback<Boolean> callback = (connection) ->
                     connection.set(key.getBytes(), value.getBytes(), Expiration.seconds(expire), RedisStringCommands.SetOption.SET_IF_ABSENT);
-            Boolean result = redisTemplate.execute(callback);
+            Boolean result = stringRedisTemplate.execute(callback);
             return Optional.ofNullable(result).orElse(false);
         } catch (Exception e) {
             log.error("setNx redis occured an exception", e);
@@ -122,7 +122,7 @@ public class IdempotentAspect {
         try {
             RedisCallback<Boolean> callback = (connection) ->
                     connection.set(key.getBytes(), value.getBytes(), Expiration.seconds(expire), RedisStringCommands.SetOption.SET_IF_PRESENT);
-            Boolean result = redisTemplate.execute(callback);
+            Boolean result = stringRedisTemplate.execute(callback);
             return Optional.ofNullable(result).orElse(false);
         } catch (Exception e) {
             log.error("setEx redis occured an exception", e);

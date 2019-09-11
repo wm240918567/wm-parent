@@ -15,6 +15,14 @@
     <description>wm-redis</description>
 
     <dependencies>
+        <!-- json解析框架：fastjson依赖 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+            <!--true是不传递给子模块 false是默认传递给子模块-->
+            <optional>false</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -30,6 +38,5 @@
     <build>
         <finalName>wm-redis</finalName>
     </build>
-
 
 </project>

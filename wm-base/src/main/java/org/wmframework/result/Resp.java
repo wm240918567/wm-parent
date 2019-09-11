@@ -5,9 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.wmframework.common.RespConst;
 
 /**
+ * 通用业务返回对象Resp
+ *
  * @author: 王锰
  * @date: 2019/8/18
  */
@@ -64,23 +65,25 @@ public class Resp<T> {
     }
 
     /**
-     * 抛出未知异常
-     *
-     * @return 未知异常信息
-     */
-    public static <T> Resp<T> unknown(T body) {
-        Resp<T> resp = new Resp<>(RespConst.UNKNOWN_EXCEPTION);
-        resp.setBody(body);
-        return resp;
-    }
-
-    /**
      * 处理失败 无返回值
      *
      * @return Resp
      */
     public static Resp fail() {
         return fail(null);
+    }
+
+    /**
+     * 抛出未知异常
+     *
+     * @param body 返回对象
+     * @param <T>  对象泛型
+     * @return 未知异常信息
+     */
+    public static <T> Resp<T> unknown(T body) {
+        Resp<T> resp = new Resp<>(RespConst.UNKNOWN_EXCEPTION);
+        resp.setBody(body);
+        return resp;
     }
 
     /**

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
+ * 基础分页查询对象
+ *
  * @author: 王锰
  * @date: 2019/8/18
  */

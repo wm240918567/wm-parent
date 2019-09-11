@@ -15,6 +15,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * 配置redis序列化问题
  * 使用fastjson解决
+ *
+ * @author: 王锰
+ * @date: 2019/9/11
  */
 @Configuration
 @ConditionalOnClass(RedisOperations.class)

@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * 基础数据传输对象
+ *
  * @author: 王锰
  * @date: 2019/8/18
  */

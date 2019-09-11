@@ -1,4 +1,4 @@
-package org.wmframework.common;
+package org.wmframework.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
