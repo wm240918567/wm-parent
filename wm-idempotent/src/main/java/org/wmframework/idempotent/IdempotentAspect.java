@@ -70,7 +70,14 @@ public class IdempotentAspect {
         boolean setNxRes = setNx(key, "1", timeout);
         if (setNxRes) {
             log.info("try lock success,execute target class");
-            Object processResult = pjp.proceed();
+            Object processResult;
+            try {
+                processResult = pjp.proceed();
+            } catch (Throwable e) {
+                log.info("have exception,unlock key");
+                stringRedisTemplate.delete(key);
+                throw new BizException(e.getMessage());
+            }
             String targetRes = JSONObject.toJSONString(processResult);
             log.info("target result:{}", targetRes);
             setEx(key, targetRes, timeout);
