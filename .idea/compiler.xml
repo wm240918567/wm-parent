@@ -10,6 +10,7 @@
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
         <module name="wm-tools" />
+        <module name="wm-cache" />
         <module name="wm-base" />
         <module name="wm-validation" />
         <module name="wm-cors" />

@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 通用业务返回对象Resp
  *
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @ApiModel(value = "通用业务返回对象Resp")
-public class Resp<T> {
+public class Resp<T> implements Serializable {
 
     @ApiModelProperty(value = "状态名称", name = "status", dataType = "String", required = true, example = "OK/BADREQ/FAIL")
     private String status;

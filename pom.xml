@@ -15,6 +15,7 @@
         <module>wm-validation</module>
         <module>wm-cors</module>
         <module>wm-crud</module>
+        <module>wm-cache</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
