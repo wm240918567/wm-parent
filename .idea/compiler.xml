@@ -12,6 +12,7 @@
         <module name="wm-cache" />
         <module name="wm-base" />
         <module name="wm-validation" />
+        <module name="wm-permissions" />
         <module name="wm-cors" />
         <module name="wm-crud" />
       </profile>

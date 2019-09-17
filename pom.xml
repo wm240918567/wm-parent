@@ -15,6 +15,7 @@
         <module>wm-cors</module>
         <module>wm-crud</module>
         <module>wm-cache</module>
+        <module>wm-permissions</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
