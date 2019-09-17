@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/wm-common/pom.xml" />
         <option value="$PROJECT_DIR$/wm-dto/pom.xml" />
         <option value="$PROJECT_DIR$/wm-service/pom.xml" />
+        <option value="$PROJECT_DIR$/wm-tools/pom.xml" />
       </set>
     </option>
   </component>

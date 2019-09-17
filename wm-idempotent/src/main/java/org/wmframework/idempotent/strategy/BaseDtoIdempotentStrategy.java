@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.wmframework.idempotent.annotations.IdempotentField;
 import org.wmframework.idempotent.common.IdempotentStrategy;
 import org.wmframework.idempotent.dto.BaseIdempotentDto;
-import org.wmframework.tools.BeanUtils;
+import org.wmframework.util.BeanUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

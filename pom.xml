@@ -10,7 +10,6 @@
         <module>wm-base</module>
         <module>wm-idempotent</module>
         <module>wm-redis</module>
-        <module>wm-tools</module>
         <module>wm-traceLog-client</module>
         <module>wm-validation</module>
         <module>wm-cors</module>
@@ -41,6 +40,7 @@
         <openfeign.version>10.2.3</openfeign.version>
         <redis.version>2.9.0</redis.version>
         <commons-lang3.version>3.4</commons-lang3.version>
+        <slf4j.version>1.7.26</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -59,9 +59,9 @@
                 <!--true是不传递给子模块 false是默认传递给子模块-->
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-logging</artifactId>
-                <version>${spring-boot.version}</version>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger</groupId>

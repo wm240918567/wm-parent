@@ -1,6 +1,5 @@
-package org.wmframework.tools;
+package org.wmframework.util;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Field;
@@ -15,7 +14,6 @@ import java.util.List;
  * @author 王锰
  * @date 11:02 2019/6/19
  */
-@Slf4j
 public class BeanUtils {
 
     /**
@@ -26,15 +24,16 @@ public class BeanUtils {
      * 当检测到传入的属性和po中属性匹配时，反射获取属性值
      * null值也会被赋值
      *
-     * @param dto 传入的DTO
-     * @return 带值的po对象
+     * @param dto 传入对象
+     * @param po  赋值后的对象
+     * @param <T> 入参对象类型
+     * @param <D> 赋值后对象类型
+     * @return 赋值后的对象
      */
-    public static <T, D> D makeFor(T dto, D po) {
-        Assert.notNull(dto, "dto is null");
-        Assert.notNull(po, "dto is null");
+    public static <T, D> D convert(T dto, D po) {
+        checkParamter(dto, po);
         List<Field> dtoFieldList = recursive(new ArrayList<>(), dto.getClass());
         List<Field> poFieldList = recursive(new ArrayList<>(), po.getClass());
-
 
         dtoFieldList.stream().filter(fd -> !Modifier.isStatic(fd.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fd -> {
             poFieldList.stream().filter(fc -> !Modifier.isStatic(fc.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fc -> {
@@ -57,16 +56,18 @@ public class BeanUtils {
      * 1，dto和po中对应的属性名，类型，必须一致
      * 2，getter/setter方法自动生成驼峰结构
      * 当检测到传入的属性和po中属性匹配时，反射获取属性值
+     * 忽略NULL值
      *
-     * @param dto 传入的DTO
-     * @return 带值的po对象
+     * @param dto 传入对象
+     * @param po  赋值后的对象
+     * @param <T> 入参对象类型
+     * @param <D> 赋值后对象类型
+     * @return 赋值后的对象
      */
-    public static <T, D> D makeForNoNull(T dto, D po) {
-        Assert.notNull(dto, "dto is null");
-        Assert.notNull(po, "dto is null");
+    public static <T, D> D convertIgnoreNull(T dto, D po) {
+        checkParamter(dto, po);
         List<Field> dtoFieldList = recursive(new ArrayList<>(), dto.getClass());
         List<Field> poFieldList = recursive(new ArrayList<>(), po.getClass());
-
 
         dtoFieldList.stream().filter(fd -> !Modifier.isStatic(fd.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fd -> {
             poFieldList.stream().filter(fc -> !Modifier.isStatic(fc.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fc -> {
@@ -86,6 +87,19 @@ public class BeanUtils {
             });
         });
         return po;
+    }
+
+    /**
+     * 校验入参
+     *
+     * @param dto dto对象
+     * @param po  po对象
+     * @param <T> 入参泛型
+     * @param <D> po泛型
+     */
+    private static <T, D> void checkParamter(T dto, D po) {
+        Assert.notNull(dto, "dto is null");
+        Assert.notNull(po, "po is null");
     }
 
     /**

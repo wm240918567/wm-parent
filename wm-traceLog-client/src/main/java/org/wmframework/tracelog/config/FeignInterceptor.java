@@ -4,6 +4,7 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
+import org.wmframework.tracelog.common.TraceIdConst;
 
 /**
  * 使用feign进行服务间调用时
@@ -17,10 +18,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class FeignInterceptor implements RequestInterceptor {
 
-    private static final String TRACEID = "traceId";
-
     public void apply(RequestTemplate requestTemplate) {
-        requestTemplate.header(TRACEID, MDC.get(TRACEID));
+        requestTemplate.header(TraceIdConst.TRACE_ID, MDC.get(TraceIdConst.TRACE_ID));
     }
 }
 

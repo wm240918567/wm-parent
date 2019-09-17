@@ -9,7 +9,6 @@
         <module name="wm-idempotent" />
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
-        <module name="wm-tools" />
         <module name="wm-cache" />
         <module name="wm-base" />
         <module name="wm-validation" />
@@ -22,6 +21,7 @@
       <module name="wm-common" target="1.8" />
       <module name="wm-dto" target="1.8" />
       <module name="wm-service" target="1.8" />
+      <module name="wm-tools" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
