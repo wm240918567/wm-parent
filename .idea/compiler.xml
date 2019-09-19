@@ -9,13 +9,13 @@
         <module name="wm-idempotent" />
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
-        <module name="wm-cache" />
-        <module name="wm-quick-starter" />
-        <module name="wm-base" />
-        <module name="wm-validation" />
-        <module name="wm-permissions" />
-        <module name="wm-cors" />
         <module name="wm-crud" />
+        <module name="wm-swagger" />
+        <module name="wm-base" />
+        <module name="wm-cache" />
+        <module name="wm-validation" />
+        <module name="wm-cors" />
+        <module name="wm-permissions" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

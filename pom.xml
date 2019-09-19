@@ -17,6 +17,7 @@
         <module>wm-cache</module>
         <module>wm-permissions</module>
         <module>wm-quick-starter</module>
+        <module>wm-swagger</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
@@ -30,16 +31,25 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <fastjson.version>1.2.60</fastjson.version>
-        <shiro-core.version>1.4.1</shiro-core.version>
         <swagger2.version>2.9.2</swagger2.version>
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
-        <pagehelper.version>5.1.4</pagehelper.version>
+        <pagehelper.version>5.1.10</pagehelper.version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <shiro-core.version>1.4.1</shiro-core.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!--fastjson start-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!--fastjson end-->
+
             <!-- swagger2 start -->
             <dependency>
                 <groupId>io.springfox</groupId>
@@ -65,12 +75,6 @@
                 <version>${pagehelper.version}</version>
             </dependency>
             <!--mp + pageHelper end-->
-
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.apache.shiro</groupId>

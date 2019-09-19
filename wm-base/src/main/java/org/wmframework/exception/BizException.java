@@ -11,7 +11,7 @@ import lombok.Getter;
 public class BizException extends Exception {
 
     @Getter
-    private int errCode;
+    private Integer errCode;
 
     /**
      * 只抛出异常信息

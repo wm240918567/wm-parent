@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 基础数据传输对象
@@ -19,12 +20,12 @@ import java.time.LocalDateTime;
 @Data
 public class BaseDto implements Serializable {
 
-    @NotBlank(message = "操作人不能为空")
-    @ApiModelProperty(value = "操作人", name = "operationBy", required = true, example = "wm")
+    @ApiModelProperty(value = "操作人", name = "operationBy", dataType = "String", required = true, example = "wm")
+    @NotBlank(message = "操作人[operationBy]{notblank}")
     protected String operationBy;
 
-    @NotNull(message = "操作时间不能为空")
-    @ApiModelProperty(value = "操作时间", name = "operationDate", required = true)
-    protected LocalDateTime operationDate;
+    @ApiModelProperty(value = "操作时间", name = "operationDate", dataType = "Date", required = true)
+    @NotNull(message = "操作时间[operationDate]{notnull}")
+    protected Date operationDate;
 
 }

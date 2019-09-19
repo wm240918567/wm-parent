@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.wmframework.idempotent.annotations.IdempotentField;
 import org.wmframework.idempotent.common.IdempotentStrategy;
 import org.wmframework.idempotent.dto.BaseIdempotentDto;
-import org.wmframework.util.BeanUtils;
+import org.wmframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class BaseDtoIdempotentStrategy implements IdempotentStrategyInterface {
             return null;
         }
         StringBuilder keyStr = new StringBuilder(PREFIX);
-        List<Field> fields = BeanUtils.recursive(new ArrayList<>(), dto.getClass());
+        List<Field> fields = ReflectionUtils.recursive(new ArrayList<>(), dto.getClass());
         for (Field field : fields) {
             field.setAccessible(true);
             IdempotentField idempotentField = field.getAnnotation(IdempotentField.class);

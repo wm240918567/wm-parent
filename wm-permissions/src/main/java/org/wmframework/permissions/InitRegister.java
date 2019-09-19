@@ -17,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
@@ -31,8 +32,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class InitRegister implements ApplicationRunner {
 
-    private static final String BASE_PACKAGE = "com.wm.demo";
-
     private static final String PERMISSIONS = "org.wmframework.permissions.Permissions";
     private static final String REQUEST_MAPPING = "org.springframework.web.bind.annotation.RequestMapping";
     private static final String GET_MAPPING = "org.springframework.web.bind.annotation.GetMapping";
@@ -40,21 +39,37 @@ public class InitRegister implements ApplicationRunner {
     private static final String PUT_MAPPING = "org.springframework.web.bind.annotation.PutMapping";
     private static final String DELETE_MAPPING = "org.springframework.web.bind.annotation.DeleteMapping";
 
-    private static final String SEND_URL = "http://127.0.0.1:8201/register";
+    @Value(value = "${wm.permissions.send-url:http://127.0.0.1:8201/register}")
+    private String sendUrl;
 
     @Value(value = "${spring.application.name:test系统}")
     private String serviceName;
 
+    @Value(value = "${wm.permissions.base-package}")
+    private String basePackage;
+
     @Autowired
     private ClassScanner classScanner;
 
+
     @Override
     public void run(ApplicationArguments args) {
+        if (StringUtils.isEmpty(basePackage)) {
+            log.error("please configuration scan path");
+            return;
+        }
         Map<String, InterfaceDefinition> registerMap = new ConcurrentHashMap<>();
-        Set<BeanDefinition> beanDefinitionSet = classScanner.scanSpecifiedAnnotationAtSpecifiedPackage(Controller.class, BASE_PACKAGE);
+        Set<BeanDefinition> beanDefinitionSet = classScanner.scanSpecifiedAnnotationAtSpecifiedPackage(Controller.class, basePackage);
+        if (null == beanDefinitionSet || beanDefinitionSet.size() <= 0) {
+            log.error("not class be define by annotation Controller");
+            return;
+        }
         for (BeanDefinition beanDefinition : beanDefinitionSet) {
             String classRequestMappingValue = getClassRequestMappingValue(beanDefinition);
             Set<MethodMetadata> permissionMethodSet = getMethodMetadataSetAtSpecialAnnotation(beanDefinition, PERMISSIONS);
+            if (null == permissionMethodSet || permissionMethodSet.size() <= 0) {
+                continue;
+            }
             for (MethodMetadata permissionMethodMetadata : permissionMethodSet) {
                 MethodMetadataReadingVisitor methodMetadataReadingVisitor = (MethodMetadataReadingVisitor) permissionMethodMetadata;
                 AnnotationAttributes permissions = methodMetadataReadingVisitor.getAnnotationAttributes(PERMISSIONS);
@@ -64,8 +79,9 @@ public class InitRegister implements ApplicationRunner {
                 Role role = getRole(permissions);
                 String uri = getInterfaceUri(classRequestMappingValue, methodMetadataReadingVisitor);
                 boolean checkRepeat = registerMap.containsKey(uri);
-                if (checkRepeat)
+                if (checkRepeat) {
                     continue;
+                }
                 registerMap.put(uri, InterfaceDefinition.builder().name(name).role(role).dynamic(dynamic).build());
             }
         }
@@ -76,9 +92,13 @@ public class InitRegister implements ApplicationRunner {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         HttpEntity<String> entity = new HttpEntity<>(registerStr, headers);
-        restTemplate.postForEntity(SEND_URL, entity, String.class);
+        restTemplate.postForEntity(sendUrl, entity, String.class);
     }
 
+    /**
+     * @param permissions permissions注解
+     * @return 权限
+     */
     private Role getRole(AnnotationAttributes permissions) {
         return (Role) permissions.get("role");
     }

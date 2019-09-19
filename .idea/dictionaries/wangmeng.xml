@@ -1,10 +1,11 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="wangmeng">
-    <words>
-      <w>badreq</w>
-      <w>fastjson</w>
-      <w>requestbody</w>
-      <w>setnx</w>
-    </words>
-  </dictionary>
+    <dictionary name="wangmeng">
+        <words>
+            <w>badreq</w>
+            <w>fastjson</w>
+            <w>notblank</w>
+            <w>requestbody</w>
+            <w>setnx</w>
+        </words>
+    </dictionary>
 </component>

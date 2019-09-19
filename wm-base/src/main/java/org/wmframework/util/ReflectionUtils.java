@@ -6,6 +6,8 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 反射工具类.
@@ -24,6 +26,22 @@ public class ReflectionUtils {
 
     private static final String CGLIB_CLASS_SEPARATOR = "$$";
 
+
+    /**
+     * 递归反射获取类字段包括父类
+     *
+     * @param list  fieldList
+     * @param clazz 类型
+     * @return fieldList
+     */
+    public static List<Field> recursive(List<Field> list, Class<?> clazz) {
+        if (clazz != null) {
+            list.addAll(Arrays.asList(clazz.getDeclaredFields()));
+            return recursive(list, clazz.getSuperclass());
+        } else {
+            return list;
+        }
+    }
 
     /**
      * 调用Getter方法.

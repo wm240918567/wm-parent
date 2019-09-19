@@ -29,6 +29,11 @@ public class DateUtils {
     public final static String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     /**
+     * 时间格式(yyyy-MM-dd HH:mm:ss SSS)
+     */
+    public final static String DATE_TIME_MS_PATTERN = "yyyy-MM-dd HH:mm:ss SSS";
+
+    /**
      * Date->LocalDateTime
      *
      * @param date date类型日期
@@ -62,7 +67,7 @@ public class DateUtils {
      * @param date 日期
      * @return 返回yyyy-MM-dd格式日期
      */
-    public static String format(final Date date) {
+    public static String formatDate(final Date date) {
         return format(date, DATE_PATTERN);
     }
 

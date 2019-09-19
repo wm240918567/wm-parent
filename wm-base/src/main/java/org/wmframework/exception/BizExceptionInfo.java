@@ -1,5 +1,6 @@
 package org.wmframework.exception;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -9,16 +10,18 @@ import lombok.Data;
  * @date: 2019/9/11
  */
 @Data
+@Builder
 public class BizExceptionInfo {
 
     /**
      * 异常码
      */
-    private int errCode;
+    private final int errCode;
 
     /**
      * 异常信息
      */
-    private String errMsg;
+    private final String errMsg;
+
 
 }

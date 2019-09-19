@@ -10,11 +10,23 @@
     </parent>
     <artifactId>wm-quick-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>wm-quick-starter</name>
     <description>wm-quick-starter</description>
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <optional>false</optional>
+        </dependency>
         <dependency>
             <groupId>org.wmframework</groupId>
             <artifactId>wm-base</artifactId>
@@ -38,16 +50,41 @@
             <artifactId>wm-cache</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <optional>false</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.wmframework</groupId>
+                    <artifactId>wm-redis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.wmframework</groupId>
             <artifactId>wm-idempotent</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <optional>false</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.wmframework</groupId>
+                    <artifactId>wm-redis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.wmframework</groupId>
             <artifactId>wm-validation</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.wmframework</groupId>
+            <artifactId>wm-permissions</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <optional>false</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wmframework</groupId>
+            <artifactId>wm-swagger</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <optional>false</optional>
         </dependency>

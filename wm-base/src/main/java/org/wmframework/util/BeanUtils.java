@@ -5,7 +5,6 @@ import org.springframework.util.Assert;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,8 +31,8 @@ public class BeanUtils {
      */
     public static <T, D> D convert(T dto, D po) {
         checkParamter(dto, po);
-        List<Field> dtoFieldList = recursive(new ArrayList<>(), dto.getClass());
-        List<Field> poFieldList = recursive(new ArrayList<>(), po.getClass());
+        List<Field> dtoFieldList = ReflectionUtils.recursive(new ArrayList<>(), dto.getClass());
+        List<Field> poFieldList = ReflectionUtils.recursive(new ArrayList<>(), po.getClass());
 
         dtoFieldList.stream().filter(fd -> !Modifier.isStatic(fd.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fd -> {
             poFieldList.stream().filter(fc -> !Modifier.isStatic(fc.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fc -> {
@@ -66,8 +65,8 @@ public class BeanUtils {
      */
     public static <T, D> D convertIgnoreNull(T dto, D po) {
         checkParamter(dto, po);
-        List<Field> dtoFieldList = recursive(new ArrayList<>(), dto.getClass());
-        List<Field> poFieldList = recursive(new ArrayList<>(), po.getClass());
+        List<Field> dtoFieldList = ReflectionUtils.recursive(new ArrayList<>(), dto.getClass());
+        List<Field> poFieldList = ReflectionUtils.recursive(new ArrayList<>(), po.getClass());
 
         dtoFieldList.stream().filter(fd -> !Modifier.isStatic(fd.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fd -> {
             poFieldList.stream().filter(fc -> !Modifier.isStatic(fc.getModifiers())).peek(p -> p.setAccessible(true)).forEach(fc -> {
@@ -102,20 +101,5 @@ public class BeanUtils {
         Assert.notNull(po, "po is null");
     }
 
-    /**
-     * 递归获取字段，包含父类
-     *
-     * @param list  fieldjlist
-     * @param clazz 类型
-     * @return fieldjlist
-     */
-    public static List<Field> recursive(List<Field> list, Class<?> clazz) {
-        if (clazz != null) {
-            list.addAll(Arrays.asList(clazz.getDeclaredFields()));
-            return recursive(list, clazz.getSuperclass());
-        } else {
-            return list;
-        }
-    }
 
 }

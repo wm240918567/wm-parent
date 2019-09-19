@@ -1,18 +1,19 @@
 package org.wmframework.validation;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.wmframework.exception.BizException;
+import org.wmframework.exception.BizExceptionInfo;
 import org.wmframework.exception.BizRuntimeException;
 import org.wmframework.result.Resp;
 
@@ -37,8 +38,29 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BizException.class)
     public Resp<String> bizExceptionHandler(BizException ex) {
-        log.error("业务异常：{}", ex.getMessage());
-        return Resp.fail(ex.getMessage());
+        String message;
+        if (null != ex.getErrCode()) {
+            BizExceptionInfo bizExceptionInfo = BizExceptionInfo.builder().errCode(ex.getErrCode()).errMsg(ex.getMessage()).build();
+            message = JSONObject.toJSONString(bizExceptionInfo);
+        } else {
+            message = ex.getMessage();
+        }
+        log.error("业务异常：{}", message);
+        return Resp.fail(message);
+    }
+
+
+    /**
+     * JSON映射到对象时异常信息
+     *
+     * @param ex 异常信息
+     * @return 返回值
+     */
+    @ExceptionHandler(JsonMappingException.class)
+    public Resp<String> jsonMappingExceptionHandler(JsonMappingException ex) {
+        StringBuilder errMsg = new StringBuilder("json数据异常:").append(ex.getMessage());
+        log.error(errMsg.toString());
+        return Resp.badReq(errMsg.toString());
     }
 
     /**
@@ -49,8 +71,15 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BizRuntimeException.class)
     public Resp<String> bizRuntimeExceptionHandler(BizRuntimeException ex) {
-        log.error("业务运行时异常：{}", ex.getMessage());
-        return Resp.fail(ex.getMessage());
+        String message;
+        if (null != ex.getErrCode()) {
+            BizExceptionInfo bizExceptionInfo = BizExceptionInfo.builder().errCode(ex.getErrCode()).errMsg(ex.getMessage()).build();
+            message = JSONObject.toJSONString(bizExceptionInfo);
+        } else {
+            message = ex.getMessage();
+        }
+        log.error("业务运行时异常：{}", message);
+        return Resp.fail(message);
     }
 
 //    /**

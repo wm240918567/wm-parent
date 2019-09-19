@@ -8,33 +8,30 @@
         <groupId>org.wmframework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>wm-cache</artifactId>
+    <artifactId>wm-swagger</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>wm-cache</name>
-    <description>wm-cache</description>
+    <packaging>jar</packaging>
+    <name>wm-swagger</name>
+    <description>wm-swagger</description>
 
     <dependencies>
+        <!-- swagger2 start -->
         <dependency>
-            <groupId>org.wmframework</groupId>
-            <artifactId>wm-redis</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
             <optional>false</optional>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
             <optional>false</optional>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
+        <!-- swagger2 end -->
     </dependencies>
 
     <build>
-        <finalName>wm-cache</finalName>
+        <finalName>wm-swagger</finalName>
     </build>
+
 
 </project>
