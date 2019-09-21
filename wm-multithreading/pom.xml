@@ -8,11 +8,11 @@
         <groupId>org.wmframework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>wm-permissions</artifactId>
+    <artifactId>wm-multithreading</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>wm-permissions</name>
-    <description>wm-permissions</description>
+    <name>wm-multithreading</name>
+    <description>wm-multithreading</description>
 
 
     <dependencies>
@@ -22,21 +22,9 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-        <!-- json解析框架：fastjson依赖 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <!--true是不传递给子模块 false是默认传递给子模块-->
-            <optional>false</optional>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
+            <artifactId>spring-context</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -46,9 +34,9 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>wm-permissions</finalName>
-    </build>
 
+    <build>
+        <finalName>wm-multithreading</finalName>
+    </build>
 
 </project>

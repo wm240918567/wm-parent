@@ -9,19 +9,22 @@
         <module name="wm-idempotent" />
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
+        <module name="wm-openfeign" />
         <module name="wm-crud" />
-        <module name="wm-swagger" />
-        <module name="wm-base" />
         <module name="wm-cache" />
-        <module name="wm-validation" />
-        <module name="wm-cors" />
+        <module name="wm-base" />
         <module name="wm-permissions" />
+        <module name="wm-validation" />
+        <module name="wm-swagger" />
+        <module name="wm-cors" />
+        <module name="wm-multithreading" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="1.8" />
       <module name="wm-common" target="1.8" />
       <module name="wm-dto" target="1.8" />
+      <module name="wm-quick-starter" target="1.8" />
       <module name="wm-service" target="1.8" />
       <module name="wm-tools" target="1.8" />
     </bytecodeTargetLevel>

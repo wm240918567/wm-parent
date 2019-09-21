@@ -16,8 +16,9 @@
         <module>wm-crud</module>
         <module>wm-cache</module>
         <module>wm-permissions</module>
-        <module>wm-quick-starter</module>
         <module>wm-swagger</module>
+        <module>wm-multithreading</module>
+        <module>wm-openfeign</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
