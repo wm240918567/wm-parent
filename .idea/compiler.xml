@@ -6,32 +6,37 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wm-idempotent" />
+        <module name="wm-permissions" />
+        <module name="wm-application-starter" />
         <module name="wm-traceLog-client" />
         <module name="wm-redis" />
         <module name="wm-openfeign" />
-        <module name="wm-crud" />
+        <module name="wm-multithreading" />
         <module name="wm-cache" />
+        <module name="wm-idempotent" />
         <module name="wm-base" />
-        <module name="wm-permissions" />
         <module name="wm-validation" />
         <module name="wm-swagger" />
         <module name="wm-cors" />
-        <module name="wm-multithreading" />
+        <module name="wm-crud" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="demo" target="1.8" />
-      <module name="wm-common" target="1.8" />
-      <module name="wm-dto" target="1.8" />
+      <module name="wm-application-starter" target="1.8" />
+      <module name="wm-base" target="1.8" />
+      <module name="wm-cache" target="1.8" />
+      <module name="wm-cors" target="1.8" />
+      <module name="wm-crud" target="1.8" />
+      <module name="wm-idempotent" target="1.8" />
+      <module name="wm-multithreading" target="1.8" />
+      <module name="wm-openfeign" target="1.8" />
+      <module name="wm-parent" target="1.8" />
+      <module name="wm-permissions" target="1.8" />
       <module name="wm-quick-starter" target="1.8" />
-      <module name="wm-service" target="1.8" />
-      <module name="wm-tools" target="1.8" />
+      <module name="wm-redis" target="1.8" />
+      <module name="wm-swagger" target="1.8" />
+      <module name="wm-traceLog-client" target="1.8" />
+      <module name="wm-validation" target="1.8" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo" options="-parameters" />
-    </option>
   </component>
 </project>

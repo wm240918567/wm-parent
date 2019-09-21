@@ -19,6 +19,7 @@
         <module>wm-swagger</module>
         <module>wm-multithreading</module>
         <module>wm-openfeign</module>
+        <module>wm-application-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>wm-parent</name>
